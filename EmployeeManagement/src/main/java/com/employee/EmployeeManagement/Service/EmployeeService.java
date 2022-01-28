@@ -17,10 +17,15 @@ public class EmployeeService {
 
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.Q1();
     }
 
     public Employee getEmployeeById(Integer id) {
+        /*Employee emp = employeeRepository.Q2(id);
+        if (emp == null) {
+            throw new ResourceNotFoundException("No Found ", "Employee", id);
+        }
+        return emp;*/
         return employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No Found ", "Employee", id));
     }
 
@@ -36,7 +41,7 @@ public class EmployeeService {
     }
 
     public String deleteEmployeeById(Integer id) {
-        employeeRepository.delete(employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not founde", "Employee", id)));
+        employeeRepository.delete(employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Not found", "Employee", id)));
         if (!employeeRepository.findById(id).isPresent())
             return "Deletion successful";
         else
