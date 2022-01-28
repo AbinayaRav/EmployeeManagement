@@ -4,13 +4,11 @@ public class ResourceNotFoundException extends RuntimeException {
 
     private String name;
     private long id;
-    private String fieldValue;
 
     public ResourceNotFoundException(String message, String name, long id) {
-        super(message);
+        super(message+" "+name+" "+id);
         this.name = name;
         this.id = id;
-        this.fieldValue = fieldValue;
     }
 
     public String getName() {
@@ -21,7 +19,5 @@ public class ResourceNotFoundException extends RuntimeException {
         return id;
     }
 
-    public String getFieldValue() {
-        return fieldValue;
-    }
+
 }

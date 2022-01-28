@@ -1,15 +1,22 @@
 package com.employee.EmployeeManagement.Model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 public class Employee {
     @Id
+    @Column(name = "EmployeeId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "empName", length = 30)
+    @Pattern(regexp = "^[A-Za-z ]+$", message = "Name of the employee should not contain any special characters! Only spaces and letters are allowed!")
+    @NotNull(message = "Employee name should not be null")
     private String empName;
+    @Column(name = "EmployeeAge")
+    @Min(10)
+    @Max(value = 100, message = "Enter a value between 10 and 100")
     private int age;
 
     public Employee() {
