@@ -15,7 +15,6 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-    //get method******************************
     @GetMapping("/get")
     List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
@@ -25,7 +24,6 @@ public class EmployeeController {
     Employee getEmployeeById(@PathVariable(name = "id") Integer id) {
         return employeeService.getEmployeeById(id);
     }
-    //New Line test for Update Project ******************** Another line!!!!
 
     @PostMapping("/add")
     Employee addNewEmployee(@RequestBody @Valid Employee employee) {
@@ -36,7 +34,6 @@ public class EmployeeController {
     Employee updateEmployee(@PathVariable(name = "id") Integer id, @RequestBody Employee updateEmployee) {
         return employeeService.updateEmployee(id, updateEmployee);
     }
-     //another line added$$$$$$$$$$$$$$$ Another line here tooo!!!
     @DeleteMapping("/deleteEmployee/{id}")
     String deleteEmployeeById(@PathVariable(name = "id") Integer id) {
         return employeeService.deleteEmployeeById(id);
